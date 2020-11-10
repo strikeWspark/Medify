@@ -1,37 +1,32 @@
 package com.dryfire.medify.Activities;
 
-import androidx.annotation.RequiresApi;
+
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
+
 import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
+
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewAnimationUtils;
-import android.widget.AutoCompleteTextView;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
+
 
 import com.dryfire.medify.Adapter.ViewPagerAdapter;
 import com.dryfire.medify.Fragments.OrderNowFragment;
 import com.dryfire.medify.Fragments.WhatsNewFragment;
 import com.dryfire.medify.R;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
-import java.lang.reflect.Field;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,9 +34,10 @@ public class MainActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private ViewPagerAdapter adapter;
-    private FloatingActionButton fab;
+    public FloatingActionButton fab;
     private AlertDialog.Builder searchBuilder;
     private AlertDialog searchDialog;
+    private boolean flag = false;
     Menu search_menu;
     MenuItem item_search;
 
@@ -68,6 +64,30 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
 
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                    if(position == 1){
+                        flag = true;
+                        fab.setImageResource(R.drawable.chatting);
+                    }else{
+                        flag = false;
+                        fab.setImageResource(R.drawable.ic_search);
+                    }
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
 
 
         tabLayout.getTabAt(0).setIcon(R.drawable.trend);
@@ -83,6 +103,10 @@ public class MainActivity extends AppCompatActivity {
                     search_toolbar.setVisibility(View.VISIBLE);
                 }
                 item_search.expandActionView(); */
+            if(flag){
+                categoryBottomSheet();
+
+            }else{
                 View dialog_view = getLayoutInflater().inflate(R.layout.search_dialog,null);
                 searchBuilder.setView(dialog_view);
                 searchDialog = searchBuilder.create();
@@ -90,9 +114,18 @@ public class MainActivity extends AppCompatActivity {
                 searchDialog.show();
 
             }
+
+            }
         });
 
 
+    }
+
+    private void categoryBottomSheet() {
+        BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
+        View v = LayoutInflater.from(this).inflate(R.layout.category_bottom_sheet,null);
+        bottomSheetDialog.setContentView(v);
+        bottomSheetDialog.show();
     }
 
   /*  private void setSearchtoolbar() {

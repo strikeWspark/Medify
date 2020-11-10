@@ -24,6 +24,7 @@ public class OrderNowFragment extends Fragment {
     OrderNowRecyclerViewAdapter adapter;
     List<OrderNow> orderNowList;
 
+
     public OrderNowFragment() {
     }
 
@@ -31,6 +32,7 @@ public class OrderNowFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.order_now_fragment,container,false);
+
         recyclerView = v.findViewById(R.id.ordernow_recyclerview);
         adapter = new OrderNowRecyclerViewAdapter(getContext(),orderNowList);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));

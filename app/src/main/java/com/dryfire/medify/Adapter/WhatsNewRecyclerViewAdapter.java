@@ -1,6 +1,7 @@
 package com.dryfire.medify.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.dryfire.medify.Activities.FullDetailActivity;
 import com.dryfire.medify.R;
 import com.dryfire.medify.Model.WhatsNew;
 
@@ -30,7 +32,7 @@ public class WhatsNewRecyclerViewAdapter extends RecyclerView.Adapter<WhatsNewRe
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v;
         v = LayoutInflater.from(context).inflate(R.layout.whats_new_card,parent,false);
-        return new MyViewHolder(v);
+        return new MyViewHolder(v,context);
     }
 
     @Override
@@ -46,16 +48,25 @@ public class WhatsNewRecyclerViewAdapter extends RecyclerView.Adapter<WhatsNewRe
         return whatsNewsList.size();
     }
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder {
+    public  class MyViewHolder extends RecyclerView.ViewHolder {
         TextView tv_item,name,username;
         CardView container;
-        public MyViewHolder(@NonNull View itemView) {
+        public MyViewHolder(@NonNull View itemView,final Context ctx) {
             super(itemView);
+
+            context = ctx;
 
             container = (CardView) itemView.findViewById(R.id.whats_newcontainer);
             tv_item = (TextView) itemView.findViewById(R.id.item_data);
             name = itemView.findViewById(R.id.name);
             username = itemView.findViewById(R.id.username);
+
+            container.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                        ctx.startActivity(new Intent(context, FullDetailActivity.class));
+                }
+            });
 
         }
     }

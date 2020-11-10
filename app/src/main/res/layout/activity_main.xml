@@ -7,8 +7,10 @@
     android:orientation="vertical"
     tools:context=".Activities.MainActivity">
 
-    <include layout="@layout/search_toolbar"
+
+    <include layout="@layout/navigation_drawer"
         android:visibility="gone"/>
+
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/naviagtion_table"
@@ -16,33 +18,39 @@
         android:layout_height="wrap_content"
         app:tabMode="fixed"
         app:tabGravity="fill"
-
         app:tabTextColor="@color/tab_text_color"
         app:tabIndicatorColor="@color/colorPrimary"/>
 
 
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <androidx.viewpager.widget.ViewPager
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/viewpager"/>
+            android:layout_height="match_parent">
+
+            <androidx.viewpager.widget.ViewPager
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/viewpager"/>
+
+
+
+
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end|bottom"
             android:id="@+id/search_fab"
-            android:src="@android:drawable/ic_input_add"
-            android:backgroundTint="@color/colorPrimaryDark"
+            android:src="@drawable/ic_search"
+            app:borderWidth="0dp"
+            android:backgroundTint="@color/cardview_light_background"
             android:layout_marginBottom="@dimen/fab_margin"
             android:layout_marginEnd="12dp"
             android:padding="@dimen/padding"
             />
-    </FrameLayout>
+
+        </FrameLayout>
+
 
 
 
