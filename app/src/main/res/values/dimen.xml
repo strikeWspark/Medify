@@ -1,0 +1,7 @@
+<resources>
+    <dimen name="margin">8dp</dimen>
+    <dimen name="padding">4dp</dimen>
+    <dimen name="title_text">22sp</dimen>
+    <dimen name="fab_margin">22dp</dimen>
+    <dimen name="shape_corners">16dp</dimen>
+</resources>

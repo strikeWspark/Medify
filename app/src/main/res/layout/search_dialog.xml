@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/search_dialog_shape">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/search_editText"
+
+        android:fontFamily="@font/open_sans_semibold"
+        android:hint="Search..."
+        android:inputType="textAutoComplete"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cancel"
+            app:cornerRadius="16dp"
+            android:layout_margin="@dimen/margin"
+            android:fontFamily="@font/open_sans_semibold"
+            android:padding="@dimen/padding"
+            android:layout_toStartOf="@+id/search_button"/>
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/cardview_light_background"
+            android:fontFamily="@font/open_sans_semibold"
+            android:layout_margin="@dimen/margin"
+            android:padding="@dimen/padding"
+            android:text="@string/search"
+            app:cornerRadius="16dp"
+            android:id="@+id/search_button"
+            android:layout_alignParentRight="true"/>
+
+    </RelativeLayout>
+
+
+</LinearLayout>
