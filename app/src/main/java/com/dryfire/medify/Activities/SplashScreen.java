@@ -6,6 +6,7 @@ import android.os.Handler;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import com.dryfire.medify.R;
 
@@ -13,6 +14,12 @@ public class SplashScreen extends AppCompatActivity implements Runnable{
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        if(AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES){
+            setTheme(R.style.darktheme);
+        }else{
+            setTheme(R.style.AppTheme);
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash_screen);
 

@@ -1,16 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="?attr/backgroundcolor"
     tools:context=".Activities.MainActivity">
 
 
-    <include layout="@layout/navigation_drawer"
-        android:visibility="gone"/>
+  <!--  <include layout="@layout/app_bar_main" /> -->
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        >
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+
+            <Switch
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/myswitch"
+                android:text="Night Mode"
+                android:textColor="?attr/textcolor"/>
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/naviagtion_table"
@@ -18,14 +39,17 @@
         android:layout_height="wrap_content"
         app:tabMode="fixed"
         app:tabGravity="fill"
-        app:tabTextColor="@color/tab_text_color"
+        android:background="?attr/backgroundcolor"
+        app:tabTextColor="?attr/textcolor"
         app:tabIndicatorColor="@color/colorPrimary"/>
 
 
 
-        <FrameLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="75dp">
 
             <androidx.viewpager.widget.ViewPager
                 android:layout_width="match_parent"
@@ -36,22 +60,26 @@
 
 
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end|bottom"
-            android:id="@+id/search_fab"
-            android:src="@drawable/ic_search"
-            app:borderWidth="0dp"
-            android:backgroundTint="@color/cardview_light_background"
-            android:layout_marginBottom="@dimen/fab_margin"
-            android:layout_marginEnd="12dp"
-            android:padding="@dimen/padding"
-            />
+        </LinearLayout>
 
-        </FrameLayout>
+    <include layout="@layout/content_main"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:id="@+id/search_fab"
+        android:src="@drawable/ic_search"
+        app:borderWidth="0dp"
+        android:backgroundTint="@color/cardview_light_background"
+        android:layout_marginBottom="@dimen/fab_margin"
+        android:layout_marginEnd="12dp"
+        android:padding="@dimen/padding"
+        />
 
 
 
 
-</LinearLayout>
+
+
+</FrameLayout>

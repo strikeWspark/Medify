@@ -5,6 +5,7 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/margin"
     app:cardElevation="5dp"
+    app:cardBackgroundColor="?attr/cardbackground"
     app:cardCornerRadius="12dp"
     app:cardUseCompatPadding="true">
 
@@ -15,12 +16,13 @@
         <ImageView
             android:layout_width="150dp"
             android:layout_height="200dp"
-            android:src="@drawable/travel"/>
+            android:src="@drawable/travel"
+            android:scaleType="centerCrop"/>
         <TextView
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:text="World just blew up"
-            android:textColor="@color/tab_text_color"
+            android:textColor="?attr/textcolor"
             android:textStyle="bold"
             android:textSize="15sp"
             android:id="@+id/trending_info"

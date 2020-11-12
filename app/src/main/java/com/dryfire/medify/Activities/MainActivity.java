@@ -4,11 +4,17 @@ package com.dryfire.medify.Activities;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
 import androidx.viewpager.widget.ViewPager;
 
 
-
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -16,6 +22,8 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 
 
 import com.dryfire.medify.Adapter.ViewPagerAdapter;
@@ -24,6 +32,7 @@ import com.dryfire.medify.Fragments.WhatsNewFragment;
 import com.dryfire.medify.R;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 
 
@@ -37,17 +46,48 @@ public class MainActivity extends AppCompatActivity {
     public FloatingActionButton fab;
     private AlertDialog.Builder searchBuilder;
     private AlertDialog searchDialog;
+    private Switch aSwitch;
     private boolean flag = false;
     Menu search_menu;
     MenuItem item_search;
+    private AppBarConfiguration mAppBarConfiguration;
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        if(AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES){
+            setTheme(R.style.darktheme);
+        }else{
+            setTheme(R.style.AppTheme);
+        }
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.navigation_drawer);
 
+        aSwitch = findViewById(R.id.myswitch);
+        if(AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES){
+            aSwitch.setChecked(true);
+        }else{
+
+        }
+
+        aSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(aSwitch.isChecked()){
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                    restartApp();
+                }else{
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                    restartApp();
+                }
+            }
+        });
+        DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.bringToFront();
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         tabLayout = (TabLayout) findViewById(R.id.naviagtion_table);
         viewPager = (ViewPager) findViewById(R.id.viewpager);
@@ -58,6 +98,12 @@ public class MainActivity extends AppCompatActivity {
         //setSearchtoolbar();
 
 
+        mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.nav_profile,R.id.nav_settings)
+                .setDrawerLayout(drawerLayout)
+                .build();
+        NavController navController = Navigation.findNavController(this,R.id.nav_host_fragment);
+        NavigationUI.setupActionBarWithNavController(this,navController,mAppBarConfiguration);
+        NavigationUI.setupWithNavController(navigationView,navController);
 
         adapter.addFragemnt(new WhatsNewFragment(),"What's New ");
         adapter.addFragemnt(new OrderNowFragment(),"Order Now");
@@ -107,11 +153,9 @@ public class MainActivity extends AppCompatActivity {
                 categoryBottomSheet();
 
             }else{
-                View dialog_view = getLayoutInflater().inflate(R.layout.search_dialog,null);
-                searchBuilder.setView(dialog_view);
-                searchDialog = searchBuilder.create();
-                searchDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                searchDialog.show();
+
+                searchAlertDialog();
+
 
             }
 
@@ -121,6 +165,22 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void restartApp() {
+
+        Intent i = new Intent(getApplicationContext(),MainActivity.class);
+        startActivity(i);
+        finish();
+    }
+
+    private void searchAlertDialog() {
+
+        View dialog_view = getLayoutInflater().inflate(R.layout.search_dialog,null);
+        searchBuilder.setView(dialog_view);
+        searchDialog = searchBuilder.create();
+        searchDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        searchDialog.show();
+    }
+
     private void categoryBottomSheet() {
         BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
         View v = LayoutInflater.from(this).inflate(R.layout.category_bottom_sheet,null);
@@ -128,7 +188,14 @@ public class MainActivity extends AppCompatActivity {
         bottomSheetDialog.show();
     }
 
-  /*  private void setSearchtoolbar() {
+    @Override
+    public boolean onSupportNavigateUp() {
+        NavController navController = Navigation.findNavController(this,R.id.nav_host_fragment);
+        return NavigationUI.navigateUp(navController,mAppBarConfiguration)
+                || super.onSupportNavigateUp();
+    }
+
+    /*  private void setSearchtoolbar() {
 
         search_toolbar = (Toolbar) findViewById(R.id.search_toolbar);
         if (search_toolbar != null) {
