@@ -1,11 +1,13 @@
 package com.dryfire.medify.Activities;
 
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -30,6 +32,9 @@ import com.dryfire.medify.Adapter.ViewPagerAdapter;
 import com.dryfire.medify.Fragments.OrderNowFragment;
 import com.dryfire.medify.Fragments.WhatsNewFragment;
 import com.dryfire.medify.R;
+import com.dryfire.medify.UI.Profile.ProfileFragment;
+import com.dryfire.medify.UI.Settings.SettingsFragment;
+import com.dryfire.medify.Util.SharedPrefs;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
@@ -37,7 +42,7 @@ import com.google.android.material.tabs.TabLayout;
 
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private Toolbar search_toolbar;
     private TabLayout tabLayout;
@@ -47,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
     private AlertDialog.Builder searchBuilder;
     private AlertDialog searchDialog;
     private Switch aSwitch;
+    DrawerLayout drawerLayout;
+    private SharedPrefs sharedPrefs;
     private boolean flag = false;
     Menu search_menu;
     MenuItem item_search;
@@ -56,7 +63,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        if(AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES){
+
+        sharedPrefs = new  SharedPrefs(this);
+        if(sharedPrefs.loadNightModeState() == true){
             setTheme(R.style.darktheme);
         }else{
             setTheme(R.style.AppTheme);
@@ -65,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.navigation_drawer);
 
         aSwitch = findViewById(R.id.myswitch);
-        if(AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES){
+        if(sharedPrefs.loadNightModeState() == true){
             aSwitch.setChecked(true);
         }else{
 
@@ -75,19 +84,23 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(aSwitch.isChecked()){
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                    sharedPrefs.setNightModeState(true);
                     restartApp();
                 }else{
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                    sharedPrefs.setNightModeState(false);
                     restartApp();
                 }
             }
         });
-        DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.bringToFront();
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        drawerLayout = findViewById(R.id.drawer_layout);
+        NavigationView navigationView = findViewById(R.id.nav_view);
+
+        navigationView.setNavigationItemSelectedListener(this);
+
+
 
         tabLayout = (TabLayout) findViewById(R.id.naviagtion_table);
         viewPager = (ViewPager) findViewById(R.id.viewpager);
@@ -98,13 +111,14 @@ public class MainActivity extends AppCompatActivity {
         //setSearchtoolbar();
 
 
-        mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.nav_profile,R.id.nav_settings)
+       /* mAppBarConfiguration = new AppBarConfiguration.Builder(
+                R.id.nav_profile,R.id.nav_settings)
                 .setDrawerLayout(drawerLayout)
                 .build();
         NavController navController = Navigation.findNavController(this,R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this,navController,mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView,navController);
-
+*/
         adapter.addFragemnt(new WhatsNewFragment(),"What's New ");
         adapter.addFragemnt(new OrderNowFragment(),"Order Now");
         viewPager.setAdapter(adapter);
@@ -193,6 +207,26 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this,R.id.nav_host_fragment);
         return NavigationUI.navigateUp(navController,mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+        switch(item.getItemId()){
+
+            case R.id.nav_profile:
+                getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,
+                        new ProfileFragment()).commit();
+                break;
+            case R.id.nav_settings:
+                getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,
+                        new SettingsFragment()).commit();
+                break;
+        }
+
+        drawerLayout.closeDrawer(GravityCompat.START);
+
+        return true;
     }
 
     /*  private void setSearchtoolbar() {

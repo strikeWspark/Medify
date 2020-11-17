@@ -6,15 +6,23 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.widget.Toolbar;
+import androidx.appcompat.widget.ToolbarWidgetWrapper;
 
 import com.dryfire.medify.R;
+import com.dryfire.medify.Util.SharedPrefs;
+import com.google.android.material.appbar.CollapsingToolbarLayout;
 
 public class FullDetailActivity extends AppCompatActivity {
 
     private TextView detailTextView;
+    private CollapsingToolbarLayout collapsingToolbarLayout;
+    private Toolbar toolbar;
+    private SharedPrefs sharedPrefs;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        if(AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES){
+        sharedPrefs = new SharedPrefs(this);
+        if(sharedPrefs.loadNightModeState() == true){
             setTheme(R.style.darktheme);
         }else{
             setTheme(R.style.AppTheme);
@@ -24,8 +32,10 @@ public class FullDetailActivity extends AppCompatActivity {
         setContentView(R.layout.full_detail_activity);
 
 
-
-        detailTextView = (TextView) findViewById(R.id.detail_text);
+        collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapse_toolbar);
+        collapsingToolbarLayout.setTitle("Title");
+        toolbar =  findViewById(R.id.toolbar);
+       detailTextView = (TextView) findViewById(R.id.detail_text);
 
 
         detailTextView.setText("What is Lorem Ipsum?\n" +

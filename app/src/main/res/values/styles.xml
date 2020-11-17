@@ -10,7 +10,11 @@
         <item name="textcolor">#808080</item>
         <item name="tintcolor">#000000</item>
         <item name="buttoncolor">#2196F3</item>
-        <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
+
+        <!--
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        --><item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
     </style>
 
 

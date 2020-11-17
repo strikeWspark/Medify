@@ -7,6 +7,10 @@
     <item
         android:id="@+id/settings"
         android:title="Settings" />
+
+        <item android:id="@+id/profile"
+            android:title="Profile"
+            android:icon="@drawable/career"/>
 <!--
     <item
         android:id="@+id/dashboard"
@@ -21,9 +25,7 @@
         android:id="@+id/activities"
         android:title="Activities"/>
 -->
-    <item android:id="@+id/profile"
-        android:title="Profile"
-        android:icon="@drawable/career"/>
+
 
     </group>
 </menu>
