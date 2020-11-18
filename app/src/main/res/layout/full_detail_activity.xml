@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?attr/backgroundcolor"
-
+    android:fitsSystemWindows="true"
     android:orientation="vertical">
 
 
@@ -24,7 +24,9 @@
             app:titleTextColor="?attr/textcolor"
             app:expandedTitleMarginEnd="64dp"
             app:expandedTitleMarginStart="64dp"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+            app:expandedTitleMarginTop="64dp"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:popupTheme="@style/AppTheme.PopupOverlay" >
 
 
             <androidx.appcompat.widget.Toolbar
@@ -45,7 +47,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginTop="300dp">
+            android:layout_marginTop="300dp"
+            android:fitsSystemWindows="true">
 
 
 
