@@ -1,31 +1,48 @@
 package com.dryfire.medify.Activities;
 
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 import androidx.appcompat.widget.ToolbarWidgetWrapper;
+import androidx.palette.graphics.Palette;
 
 import com.dryfire.medify.R;
 import com.dryfire.medify.Util.SharedPrefs;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
+
+import java.util.List;
 
 public class FullDetailActivity extends AppCompatActivity {
 
     private TextView detailTextView;
     private CollapsingToolbarLayout collapsingToolbarLayout;
     private Toolbar toolbar;
-    private SharedPrefs sharedPrefs;
+
+    private SharedPrefs sharedPrefs;private Palette.Swatch vibrantSwatch;
+    private Palette.Swatch lightVibrantSwatch;
+    private Palette.Swatch darkVibrantSwatch;
+    private Palette.Swatch mutedSwatch;
+    private Palette.Swatch lightMutedSwatch;
+    private Palette.Swatch darkMutedSwatch;
+    private Palette.Swatch currentSwatch = null;
+    boolean flag;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         sharedPrefs = new SharedPrefs(this);
         if(sharedPrefs.loadNightModeState() == true){
             setTheme(R.style.darktheme);
+            flag = true;
         }else{
             setTheme(R.style.AppTheme);
+            flag = false;
         }
 
         super.onCreate(savedInstanceState);
@@ -35,6 +52,34 @@ public class FullDetailActivity extends AppCompatActivity {
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapse_toolbar);
         collapsingToolbarLayout.setTitle("Title");
         toolbar =  findViewById(R.id.toolbar);
+        Bitmap bitmap = ((BitmapDrawable) getDrawable(R.drawable.image)).getBitmap();
+       // BitmapDrawable ob = new BitmapDrawable(getResources(),bitmap);
+       //collapsingToolbarLayout.setBackground(ob);
+
+        Palette.from(bitmap).generate(new Palette.PaletteAsyncListener() {
+            @Override
+            public void onGenerated(@Nullable Palette palette) {
+                vibrantSwatch = palette.getVibrantSwatch();
+                lightVibrantSwatch = palette.getLightVibrantSwatch();
+                darkVibrantSwatch = palette.getDarkVibrantSwatch();
+                mutedSwatch = palette.getMutedSwatch();
+                lightMutedSwatch = palette.getLightMutedSwatch();
+                darkMutedSwatch = palette.getDarkMutedSwatch();
+            }
+        });
+        if (flag){
+            currentSwatch = darkVibrantSwatch;
+        }else{
+            currentSwatch = lightVibrantSwatch;
+        }
+        if(currentSwatch != null){
+            colorDecide();
+        }else{
+            Toast.makeText(this, "Nhi mila color", Toast.LENGTH_SHORT).show();
+        }
+
+
+
        detailTextView = (TextView) findViewById(R.id.detail_text);
 
 
@@ -52,5 +97,11 @@ public class FullDetailActivity extends AppCompatActivity {
                 "\n" +
                 "Where can I get some?\n" +
                 "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.");
+    }
+
+    private void colorDecide() {
+            collapsingToolbarLayout.setContentScrimColor(currentSwatch.getRgb());
+        //    collapsingToolbarLayout.setContentScrimColor(currentSwatch.getBodyTextColor());
+
     }
 }
