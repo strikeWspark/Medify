@@ -9,12 +9,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
 import com.dryfire.medify.R;
+import com.dryfire.medify.Util.SharedPrefs;
 
 public class SplashScreen extends AppCompatActivity implements Runnable{
 
+    private SharedPrefs sharedPrefs;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        if(AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES){
+
+        sharedPrefs = new SharedPrefs(this);
+        if(sharedPrefs.loadNightModeState() == true){
             setTheme(R.style.darktheme);
         }else{
             setTheme(R.style.AppTheme);

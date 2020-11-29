@@ -5,7 +5,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import androidx.appcompat.app.AppCompatDelegate;
+
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -24,7 +24,9 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.CompoundButton;
+import android.widget.LinearLayout;
 import android.widget.Switch;
 
 
@@ -32,6 +34,7 @@ import com.dryfire.medify.Adapter.ViewPagerAdapter;
 import com.dryfire.medify.Fragments.OrderNowFragment;
 import com.dryfire.medify.Fragments.WhatsNewFragment;
 import com.dryfire.medify.R;
+import com.dryfire.medify.UI.NavigationIconClickListener;
 import com.dryfire.medify.UI.Profile.ProfileFragment;
 import com.dryfire.medify.UI.Settings.SettingsFragment;
 import com.dryfire.medify.Util.SharedPrefs;
@@ -42,11 +45,12 @@ import com.google.android.material.tabs.TabLayout;
 
 
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
     private Toolbar search_toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
+    private LinearLayout sliding_linearLayout;
     private ViewPagerAdapter adapter;
     public FloatingActionButton fab;
     private AlertDialog.Builder searchBuilder;
@@ -71,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             setTheme(R.style.AppTheme);
         }
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.navigation_drawer);
+        setContentView(R.layout.activity_main);
 
         aSwitch = findViewById(R.id.myswitch);
         if(sharedPrefs.loadNightModeState() == true){
@@ -94,11 +98,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         });
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+       // sliding_linearLayout = findViewById(R.id.slidind_layout);
+        toolbar.setNavigationOnClickListener(new NavigationIconClickListener(this,
+                findViewById(R.id.slidind_layout),
+                new AccelerateDecelerateInterpolator(),
+                this.getResources().getDrawable(R.drawable.ic_launcher_foreground),
+                this.getResources().getDrawable(R.drawable.ic_close)));
 
         drawerLayout = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
 
-        navigationView.setNavigationItemSelectedListener(this);
+       // navigationView.setNavigationItemSelectedListener(this);
 
 
 
@@ -150,8 +160,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
 
-        tabLayout.getTabAt(0).setIcon(R.drawable.trend);
-        tabLayout.getTabAt(1).setIcon(R.drawable.chatting);
+      //  tabLayout.getTabAt(0).setIcon(R.drawable.trend);
+      //  tabLayout.getTabAt(1).setIcon(R.drawable.chatting);
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -227,6 +237,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout.closeDrawer(GravityCompat.START);
 
         return true;
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.medify_signout:
+                break;
+            case R.id.medify_profile:
+                break;
+            case R.id.more:
+                    startActivity(new Intent(MainActivity.this,MoreActivity.class));
+                break;
+        }
     }
 
     /*  private void setSearchtoolbar() {

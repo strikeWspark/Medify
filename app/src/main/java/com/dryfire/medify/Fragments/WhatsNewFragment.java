@@ -4,10 +4,13 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
+
+import android.widget.FrameLayout;
+
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -27,6 +30,7 @@ public class WhatsNewFragment extends Fragment {
     private RecyclerView trending_RecyclerView;
     private List<WhatsNew> whatsNewList;
     private List<Trending> trendingList;
+    private FrameLayout cardView;
     public WhatsNewFragment() {
     }
 
@@ -36,6 +40,7 @@ public class WhatsNewFragment extends Fragment {
         v = inflater.inflate(R.layout.whats_new_layout,container,false);
         recyclerView = v.findViewById(R.id.whatsnew_recyclerview);
         trending_RecyclerView = v.findViewById(R.id.trending_on_social_media);
+        cardView = v.findViewById(R.id.trending_layout);
         TrendingSocialRecyclerViewAdapter trending_adapter = new TrendingSocialRecyclerViewAdapter(getContext(),trendingList);
         WhatsNewRecyclerViewAdapter adapter = new WhatsNewRecyclerViewAdapter(getContext(),whatsNewList);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
@@ -44,6 +49,30 @@ public class WhatsNewFragment extends Fragment {
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+
+                if(dx > 0){
+                    // cardView.shrink();
+                   // LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,0);
+
+                   //RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) trending_RecyclerView.getLayoutParams();
+                }else{
+                  //  RecyclerView.LayoutParams params = new RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT,200);
+                  //  cardView.getLayoutParams();
+                  //  trending_RecyclerView.setLayoutParams(params);
+
+
+                }
+            }
+        });
         return v;
     }
 
@@ -52,6 +81,7 @@ public class WhatsNewFragment extends Fragment {
         super.onCreate(savedInstanceState);
         trendingList = new ArrayList<>();
         whatsNewList = new ArrayList<>();
+
         whatsNewList.add(new WhatsNew("Data Item 1","Fionna","fionna@example.com"));
         whatsNewList.add(new WhatsNew("Data Item 2","John","john@example.com"));
         whatsNewList.add(new WhatsNew("Data Item 3","Cris","cris@example.com"));
@@ -62,6 +92,8 @@ public class WhatsNewFragment extends Fragment {
         trendingList.add(new Trending("You know what it's trending"));
         trendingList.add(new Trending("Tell me something I don't know"));
         trendingList.add(new Trending("Why you're still alive"));
+
+
 
     }
 }

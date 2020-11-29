@@ -2,4 +2,8 @@
     <string name="app_name">Medify</string>
     <string name="search">Search</string>
     <string name="cancel">Cancell</string>
+    <string name="signout">Signout</string>
+    <string name="profile">Profile</string>
+    <string name="more">More</string>
+    <string name="report_bug">Report Bug</string>
 </resources>

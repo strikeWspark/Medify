@@ -63,7 +63,10 @@ public class FullDetailActivity extends AppCompatActivity {
             collapsingToolbarLayout.setCollapsedTitleTextColor(Color.parseColor("#ffffff"));
         }
 
-            toolbar = findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+      //  toolbar.setDisplayHomeAsUpEnabled(true);
+
             Bitmap bitmap = ((BitmapDrawable) getDrawable(R.drawable.image)).getBitmap();
             // BitmapDrawable ob = new BitmapDrawable(getResources(),bitmap);
             //collapsingToolbarLayout.setBackground(ob);
@@ -113,6 +116,7 @@ public class FullDetailActivity extends AppCompatActivity {
 
         private void colorDecide(){
             collapsingToolbarLayout.setContentScrimColor(currentSwatch.getRgb());
+
             //    collapsingToolbarLayout.setContentScrimColor(currentSwatch.getBodyTextColor());
 
         }
