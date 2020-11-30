@@ -1,4 +1,4 @@
-package com.dryfire.medify.UI;
+package com.dryfire.medify.Util;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;

@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/nav_profile"
-        android:name="com.dryfire.medify.UI.Profile.ProfileFragment"
+        android:name="com.dryfire.medify.UI.Profile.ProfileActivity"
         android:label="Profile"/>
 
 

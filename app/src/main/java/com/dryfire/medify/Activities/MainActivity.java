@@ -25,17 +25,18 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
-import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.Switch;
+import android.widget.TextView;
 
 
 import com.dryfire.medify.Adapter.ViewPagerAdapter;
 import com.dryfire.medify.Fragments.OrderNowFragment;
 import com.dryfire.medify.Fragments.WhatsNewFragment;
 import com.dryfire.medify.R;
-import com.dryfire.medify.UI.NavigationIconClickListener;
-import com.dryfire.medify.UI.Profile.ProfileFragment;
+import com.dryfire.medify.UI.More.MoreActivity;
+import com.dryfire.medify.Util.NavigationIconClickListener;
+import com.dryfire.medify.UI.Profile.ProfileActivity;
 import com.dryfire.medify.UI.Settings.SettingsFragment;
 import com.dryfire.medify.Util.SharedPrefs;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -56,6 +57,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private AlertDialog.Builder searchBuilder;
     private AlertDialog searchDialog;
     private Switch aSwitch;
+    private TextView moreButton,profileButton;
     DrawerLayout drawerLayout;
     private SharedPrefs sharedPrefs;
     private boolean flag = false;
@@ -77,25 +79,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        aSwitch = findViewById(R.id.myswitch);
-        if(sharedPrefs.loadNightModeState() == true){
-            aSwitch.setChecked(true);
-        }else{
 
-        }
-
-        aSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(aSwitch.isChecked()){
-                    sharedPrefs.setNightModeState(true);
-                    restartApp();
-                }else{
-                    sharedPrefs.setNightModeState(false);
-                    restartApp();
-                }
-            }
-        });
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
        // sliding_linearLayout = findViewById(R.id.slidind_layout);
@@ -116,10 +100,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         fab = (FloatingActionButton) findViewById(R.id.search_fab);
         search_toolbar = (Toolbar) findViewById(R.id.search_toolbar);
+        moreButton = (TextView) findViewById(R.id.more);
+        profileButton = (TextView) findViewById(R.id.medify_profile);
         adapter = new ViewPagerAdapter(getSupportFragmentManager());
         searchBuilder = new AlertDialog.Builder(this);
         //setSearchtoolbar();
 
+        moreButton.setOnClickListener(this);
+        profileButton.setOnClickListener(this);
 
        /* mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_profile,R.id.nav_settings)
@@ -189,12 +177,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
-    private void restartApp() {
 
-        Intent i = new Intent(getApplicationContext(),MainActivity.class);
-        startActivity(i);
-        finish();
-    }
 
     private void searchAlertDialog() {
 
@@ -222,11 +205,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-        switch(item.getItemId()){
+        /*switch(item.getItemId()){
 
             case R.id.nav_profile:
                 getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,
-                        new ProfileFragment()).commit();
+                        new ProfileActivity()).commit();
                 break;
             case R.id.nav_settings:
                 getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,
@@ -235,7 +218,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
 
         drawerLayout.closeDrawer(GravityCompat.START);
-
+*/
         return true;
     }
 
@@ -245,9 +228,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.medify_signout:
                 break;
             case R.id.medify_profile:
+                startActivity(new Intent(this,ProfileActivity.class));
                 break;
             case R.id.more:
-                    startActivity(new Intent(MainActivity.this,MoreActivity.class));
+                    startActivity(new Intent(this, MoreActivity.class));
                 break;
         }
     }

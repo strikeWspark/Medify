@@ -40,12 +40,7 @@
             app:popupTheme="@style/AppTheme.PopupOverlay">
 
 
-            <Switch
-                android:id="@+id/myswitch"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Night Mode"
-                android:textColor="?attr/textcolor" />
+
         </androidx.appcompat.widget.Toolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
