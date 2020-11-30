@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -37,7 +36,6 @@ import com.dryfire.medify.R;
 import com.dryfire.medify.UI.More.MoreActivity;
 import com.dryfire.medify.Util.NavigationIconClickListener;
 import com.dryfire.medify.UI.Profile.ProfileActivity;
-import com.dryfire.medify.UI.Settings.SettingsFragment;
 import com.dryfire.medify.Util.SharedPrefs;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -86,8 +84,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toolbar.setNavigationOnClickListener(new NavigationIconClickListener(this,
                 findViewById(R.id.slidind_layout),
                 new AccelerateDecelerateInterpolator(),
-                this.getResources().getDrawable(R.drawable.ic_launcher_foreground),
-                this.getResources().getDrawable(R.drawable.ic_close)));
+                this.getResources().getDrawable(R.drawable.toolbar_medify),
+                this.getResources().getDrawable(R.drawable.ic_close_black)));
 
         drawerLayout = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);

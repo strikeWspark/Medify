@@ -36,7 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/backgroundcolor"
-            app:navigationIcon="@drawable/ic_launcher_foreground"
+            app:navigationIcon="@drawable/toolbar_medify"
             app:popupTheme="@style/AppTheme.PopupOverlay">
 
 

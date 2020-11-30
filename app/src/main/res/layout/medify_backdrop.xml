@@ -3,15 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-   <ImageView
+   <de.hdodenhof.circleimageview.CircleImageView
        android:id="@+id/profile_picture"
        android:layout_width="150dp"
        android:layout_height="150dp"
+       app:civ_border_width="2dp"
+       app:civ_border_color="@color/colorPrimary"
        android:padding="@dimen/padding"
        android:layout_margin="@dimen/margin"
-       android:src="@drawable/career"/>
+       android:src="@drawable/image"/>
 
-    <com.google.android.material.button.MaterialButton
+    <TextView
         android:id="@+id/medify_signout"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
@@ -35,25 +37,23 @@
         android:background="@drawable/ripple_effect"
         android:textColor="?attr/textcolor"
         android:backgroundTint="?attr/backgroundcolor"
-        android:elevation="0dp"
-        android:textSize="18sp"
-        android:fontFamily="@font/open_sans_semibold"
-        app:cornerRadius="@dimen/fab_margin"/>
+        android:textSize="@dimen/textButton"
+        android:fontFamily="@font/open_sans_semibold" />
 
-    <com.google.android.material.button.MaterialButton
+    <TextView
         android:id="@+id/support_developement"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:text="support"
+        android:textAlignment="center"
         android:background="@drawable/ripple_effect"
         android:textColor="?attr/textcolor"
         android:backgroundTint="?attr/backgroundcolor"
-        android:elevation="0dp"
-        android:textSize="18sp"
+
+        android:textSize="@dimen/textButton"
         android:fontFamily="@font/open_sans_semibold"
         android:layout_margin="@dimen/margin"
-        android:padding="@dimen/padding"
-        app:cornerRadius="@dimen/fab_margin"/>
+        android:padding="@dimen/padding" />
     <View
         android:layout_width="36dp"
         android:layout_height="1dp"
@@ -70,9 +70,8 @@
         android:textAlignment="center"
         android:background="@drawable/ripple_effect"
         android:backgroundTint="?attr/backgroundcolor"
-        android:elevation="0dp"
         android:textColor="?attr/textcolor"
-        android:textSize="18sp"
+        android:textSize="@dimen/textButton"
         android:fontFamily="@font/open_sans_semibold"
         android:layout_margin="@dimen/margin"
         android:padding="@dimen/padding"
@@ -82,15 +81,14 @@
         android:id="@+id/sold_howtouse"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:text="howto_use"
+        android:text="How to Use"
         android:textAlignment="center"
         android:background="@drawable/ripple_effect"
         android:textColor="?attr/textcolor"
         android:backgroundTint="?attr/backgroundcolor"
-        android:elevation="0dp"
-        android:textSize="18sp"
-        android:fontFamily="@font/open_sans_semibold"
-        app:cornerRadius="@dimen/fab_margin"/>
+
+        android:textSize="@dimen/textButton"
+        android:fontFamily="@font/open_sans_semibold" />
 
 
 </merge>
