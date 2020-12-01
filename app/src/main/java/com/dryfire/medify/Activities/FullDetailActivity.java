@@ -58,6 +58,7 @@ public class FullDetailActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapse_toolbar);
+        collapsingToolbarLayout.setExpandedTitleTextAppearance(R.style.collapsingToolbarTitleTextColor);
         collapsingToolbarLayout.setTitle("Title");
         if (flag) {
             collapsingToolbarLayout.setCollapsedTitleTextColor(Color.parseColor("#ffffff"));

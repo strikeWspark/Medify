@@ -1,6 +1,8 @@
 package com.dryfire.medify.Fragments;
 
+import android.app.Activity;
 import android.os.Bundle;
+import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,10 +13,13 @@ import android.widget.FrameLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.dryfire.medify.Activities.MainActivity;
 import com.dryfire.medify.Adapter.TrendingSocialRecyclerViewAdapter;
 import com.dryfire.medify.Adapter.WhatsNewRecyclerViewAdapter;
 import com.dryfire.medify.Model.Trending;
@@ -31,6 +36,9 @@ public class WhatsNewFragment extends Fragment {
     private List<WhatsNew> whatsNewList;
     private List<Trending> trendingList;
     private FrameLayout cardView;
+    private ConstraintSet layout1,layout2;
+    private ConstraintLayout constraintLayout;
+    private boolean flag = false,isOpen = false;
     public WhatsNewFragment() {
     }
 
@@ -41,6 +49,14 @@ public class WhatsNewFragment extends Fragment {
         recyclerView = v.findViewById(R.id.whatsnew_recyclerview);
         trending_RecyclerView = v.findViewById(R.id.trending_on_social_media);
         cardView = v.findViewById(R.id.trending_layout);
+
+        layout1 = new ConstraintSet();
+        layout2 = new ConstraintSet();
+        constraintLayout = v.findViewById(R.id.whats_new_constraint_layout);
+
+        layout2.clone(getContext(),R.layout.whats_new_layout_collapsed);
+        layout1.clone(constraintLayout);
+
         TrendingSocialRecyclerViewAdapter trending_adapter = new TrendingSocialRecyclerViewAdapter(getContext(),trendingList);
         WhatsNewRecyclerViewAdapter adapter = new WhatsNewRecyclerViewAdapter(getContext(),whatsNewList);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
@@ -49,6 +65,7 @@ public class WhatsNewFragment extends Fragment {
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
+
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
@@ -61,18 +78,30 @@ public class WhatsNewFragment extends Fragment {
 
                 if(dx > 0){
                     // cardView.shrink();
-                   // LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,0);
+                    // LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,0);
 
-                   //RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) trending_RecyclerView.getLayoutParams();
+                    //RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) trending_RecyclerView.getLayoutParams();
+
+                    TransitionManager.beginDelayedTransition(constraintLayout);
+                    layout2.applyTo(constraintLayout);
+                    isOpen = !isOpen;
+                    if(!isOpen){
+
+                    }else{
+
+                    }
                 }else{
-                  //  RecyclerView.LayoutParams params = new RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT,200);
-                  //  cardView.getLayoutParams();
-                  //  trending_RecyclerView.setLayoutParams(params);
-
+                    //  RecyclerView.LayoutParams params = new RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT,200);
+                    //  cardView.getLayoutParams();
+                    //  trending_RecyclerView.setLayoutParams(params);
+                    TransitionManager.beginDelayedTransition(constraintLayout);
+                    layout1.applyTo(constraintLayout);
+                    isOpen = !isOpen;
 
                 }
             }
         });
+
         return v;
     }
 
@@ -92,6 +121,14 @@ public class WhatsNewFragment extends Fragment {
         trendingList.add(new Trending("You know what it's trending"));
         trendingList.add(new Trending("Tell me something I don't know"));
         trendingList.add(new Trending("Why you're still alive"));
+
+
+
+
+
+
+
+
 
 
 

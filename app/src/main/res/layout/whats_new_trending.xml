@@ -18,13 +18,14 @@
         <ImageView
             android:layout_width="150dp"
             android:layout_height="200dp"
-            android:src="@drawable/travel"
-            android:scaleType="centerCrop"/>
+            android:background="@drawable/travel"
+            android:scaleType="centerCrop"
+            android:src="@drawable/full_details_toolbar_background"/>
         <TextView
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:text="World just blew up"
-            android:textColor="?attr/textcolor"
+            android:textColor="@android:color/white"
             android:textStyle="bold"
             android:textSize="15sp"
             android:id="@+id/trending_info"

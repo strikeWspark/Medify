@@ -19,14 +19,22 @@
             android:id="@+id/collapse_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/image"
+            android:textAlignment="center"
+            style="@style/collapsingToolbarTitleTextColor"
             app:contentScrim="?attr/backgroundcolor"
-            app:titleTextColor="?attr/textcolor"
+            app:titleTextColor="#ffffff"
             app:expandedTitleMarginEnd="64dp"
             app:expandedTitleMarginStart="64dp"
             app:expandedTitleMarginTop="64dp"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:popupTheme="@style/AppTheme.PopupOverlay" >
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/image"
+                android:src="@drawable/full_details_toolbar_background"
+                app:layout_collapseMode="parallax"/>
 
 
             <androidx.appcompat.widget.Toolbar

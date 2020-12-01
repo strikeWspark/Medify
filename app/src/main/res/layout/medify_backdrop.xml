@@ -11,34 +11,44 @@
        app:civ_border_color="@color/colorPrimary"
        android:padding="@dimen/padding"
        android:layout_margin="@dimen/margin"
-       android:src="@drawable/image"/>
+       android:src="@drawable/profile_icon"/>
 
     <TextView
-        android:id="@+id/medify_signout"
-        android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:text="@string/signout"
-        android:textColor="?attr/textcolor"
-        android:textSize="18sp"
-        android:background="@drawable/ripple_effect"
-        android:backgroundTint="?attr/backgroundcolor"
-        android:elevation="0dp"
-        android:fontFamily="@font/open_sans_semibold"
-        android:layout_margin="@dimen/margin"
-        android:padding="@dimen/padding"
-        app:cornerRadius="@dimen/fab_margin"/>
-
-    <TextView
-        android:id="@+id/medify_profile"
         android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="@string/profile"
-        android:textAlignment="center"
-        android:background="@drawable/ripple_effect"
-        android:textColor="?attr/textcolor"
-        android:backgroundTint="?attr/backgroundcolor"
-        android:textSize="@dimen/textButton"
-        android:fontFamily="@font/open_sans_semibold" />
+        android:text="Steve Smith"
+        android:textStyle="bold"
+        android:textColor="?attr/colorAccent"
+        android:fontFamily="@font/open_sans_semibold"
+        android:textSize="15sp"/>
+
+ <TextView
+     android:id="@+id/medify_signout"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:background="@drawable/ripple_effect"
+     android:backgroundTint="?attr/backgroundcolor"
+     android:elevation="0dp"
+     android:fontFamily="sans-serif-considered"
+     android:text="@string/signout"
+     android:layout_margin="@dimen/margin"
+     android:padding="@dimen/padding"
+     android:textColor="?attr/textcolor"
+     android:textSize="@dimen/backdrop_textSize" />
+
+ <TextView
+     android:id="@+id/medify_profile"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:background="@drawable/ripple_effect"
+     android:backgroundTint="?attr/backgroundcolor"
+     android:fontFamily="sans-serif-condensed"
+     android:text="@string/profile"
+     android:textAlignment="center"
+     android:textColor="?attr/textcolor"
+     android:layout_margin="@dimen/margin"
+     android:padding="@dimen/padding"
+     android:textSize="@dimen/backdrop_textSize" />
 
     <TextView
         android:id="@+id/support_developement"
@@ -50,8 +60,8 @@
         android:textColor="?attr/textcolor"
         android:backgroundTint="?attr/backgroundcolor"
 
-        android:textSize="@dimen/textButton"
-        android:fontFamily="@font/open_sans_semibold"
+        android:textSize="@dimen/backdrop_textSize"
+        android:fontFamily="sans-serif-condensed"
         android:layout_margin="@dimen/margin"
         android:padding="@dimen/padding" />
     <View
@@ -71,24 +81,27 @@
         android:background="@drawable/ripple_effect"
         android:backgroundTint="?attr/backgroundcolor"
         android:textColor="?attr/textcolor"
-        android:textSize="@dimen/textButton"
-        android:fontFamily="@font/open_sans_semibold"
+        android:textSize="@dimen/backdrop_textSize"
+        android:fontFamily="sans-serif-condensed"
         android:layout_margin="@dimen/margin"
         android:padding="@dimen/padding"
 
         />
-    <TextView
-        android:id="@+id/sold_howtouse"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="How to Use"
-        android:textAlignment="center"
-        android:background="@drawable/ripple_effect"
-        android:textColor="?attr/textcolor"
-        android:backgroundTint="?attr/backgroundcolor"
 
-        android:textSize="@dimen/textButton"
-        android:fontFamily="@font/open_sans_semibold" />
+ <TextView
+     android:id="@+id/sold_howtouse"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:background="@drawable/ripple_effect"
+     android:backgroundTint="?attr/backgroundcolor"
+     android:fontFamily="sans-serif-condensed"
+     android:text="How to Use"
+     android:textAlignment="center"
+
+     android:layout_margin="@dimen/margin"
+     android:padding="@dimen/padding"
+     android:textColor="?attr/textcolor"
+     android:textSize="@dimen/backdrop_textSize" />
 
 
 </merge>

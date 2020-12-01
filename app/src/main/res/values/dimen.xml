@@ -4,4 +4,7 @@
     <dimen name="title_text">22sp</dimen>
     <dimen name="fab_margin">22dp</dimen>
     <dimen name="shape_corners">16dp</dimen>
+    <dimen name="medify_grid_reveal_height">218dp</dimen>
+    <dimen name="textButton">25sp</dimen>
+    <dimen name="backdrop_textSize">22sp</dimen>
 </resources>
