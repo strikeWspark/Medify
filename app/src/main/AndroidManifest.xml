@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.dryfire.medify">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/medify_logo"
@@ -12,6 +14,7 @@
 
 
         <activity android:name=".Activities.SplashScreen">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,8 +25,12 @@
         <activity android:name=".Activities.MainActivity">
 
 
+
         </activity>
-        <activity android:name=".UI.Profile.ProfileActivity"/>
+        <activity android:name=".UI.Profile.ProfileActivity">
+
+
+        </activity>
         <activity android:name=".UI.More.MoreActivity"/>
         <activity android:name=".Activities.FullDetailActivity"/>
         <meta-data

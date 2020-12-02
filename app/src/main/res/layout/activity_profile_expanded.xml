@@ -1,9 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true">
+    android:fitsSystemWindows="true"
+    android:background="?attr/backgroundcolor"
+    android:id="@+id/profile_constraint_layout">
+
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        app:elevation="0dp"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_marginTop="48dp"
+        android:backgroundTint="@android:color/transparent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/profile_toolbar"
+            android:layout_width="match_parent"
+            app:title="   "
+            android:layout_height="?attr/actionBarSize"
+
+            />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
 
     <ImageView
         android:id="@+id/imageView2"
@@ -26,5 +50,175 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+
+    <LinearLayout
+        android:id="@+id/card_layouts"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="?attr/backgroundcolor"
+        app:layout_constraintTop_toBottomOf="@+id/photo">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Steve Smith"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/margin"
+            android:padding="@dimen/padding"
+            android:textStyle="bold"
+            android:fontFamily="@font/open_sans_semibold"
+            android:textSize="@dimen/title_text"
+            android:textColor="?attr/textcolor"/>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+
+            app:cardBackgroundColor="?attr/cardbackground"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="12dp"
+            app:cardUseCompatPadding="true">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/gradient_one" />
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <TableRow>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/margin"
+                        android:fontFamily="sans-serif-condensed"
+                        android:padding="@dimen/padding"
+                        android:text="Age:             21"
+                        android:gravity="center"
+                        android:textColor="#ffffff"
+                        android:textSize="@dimen/title_text"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:layout_width="3dp"
+                        android:layout_height="75dp"
+                        android:background="#ffffff"
+                        android:layout_margin="@dimen/margin"
+                        android:padding="@dimen/padding"
+                        android:layout_gravity="center_horizontal"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/margin"
+                        android:gravity="center"
+                        android:fontFamily="sans-serif-condensed"
+                        android:padding="@dimen/padding"
+                        android:text="Weight:          78"
+                        android:textColor="#ffffff"
+                        android:textSize="@dimen/title_text"
+                        android:textStyle="bold" />
+
+                </TableRow>
+
+            </TableLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+
+
+            app:cardBackgroundColor="?attr/cardbackground"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="12dp"
+            app:cardUseCompatPadding="true">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/gradient_one" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin"
+                android:fontFamily="sans-serif-condensed"
+                android:padding="@dimen/padding"
+                android:text="Diet Preference:    Keto"
+                android:textColor="#ffffff"
+                android:textSize="@dimen/title_text"
+                android:textStyle="bold" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+
+            app:cardBackgroundColor="?attr/cardbackground"
+
+            app:cardCornerRadius="10dp"
+            app:cardElevation="12dp"
+            app:cardUseCompatPadding="true">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/gradient_one" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin"
+                android:fontFamily="sans-serif-condensed"
+                android:padding="@dimen/padding"
+                android:text="Blood Group: O+"
+                android:textColor="#ffffff"
+                android:textSize="@dimen/title_text"
+                android:textStyle="bold" />
+        </androidx.cardview.widget.CardView>
+
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="200dp"
+            android:layout_height="175dp"
+            android:layout_gravity="center"
+            app:cardBackgroundColor="?attr/cardbackground"
+
+            app:cardCornerRadius="56dp"
+            app:cardElevation="12dp"
+            app:cardUseCompatPadding="true">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/gradient_one" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin"
+                android:fontFamily="sans-serif-condensed"
+                android:padding="@dimen/padding"
+                android:text="\t20.5 \n Normal"
+                android:layout_gravity="center"
+                android:textColor="#ffffff"
+                android:textSize="@dimen/title_text"
+                android:textStyle="bold" />
+        </androidx.cardview.widget.CardView>
+
+
+
+
+    </LinearLayout>
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

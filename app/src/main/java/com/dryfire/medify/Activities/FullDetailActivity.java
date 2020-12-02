@@ -1,9 +1,11 @@
 package com.dryfire.medify.Activities;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -64,10 +66,18 @@ public class FullDetailActivity extends AppCompatActivity {
             collapsingToolbarLayout.setCollapsedTitleTextColor(Color.parseColor("#ffffff"));
         }
 
-        toolbar = findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar_full_detail);
         setSupportActionBar(toolbar);
-      //  toolbar.setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(FullDetailActivity.this,MainActivity.class));
+                finish();
+            }
+        });
             Bitmap bitmap = ((BitmapDrawable) getDrawable(R.drawable.image)).getBitmap();
             // BitmapDrawable ob = new BitmapDrawable(getResources(),bitmap);
             //collapsingToolbarLayout.setBackground(ob);
