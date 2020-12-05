@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 
 import androidx.annotation.NonNull;
@@ -42,6 +43,59 @@ public class WhatsNewFragment extends Fragment {
     public WhatsNewFragment() {
     }
 
+    private RecyclerView.OnScrollListener onScrollListener = new RecyclerView.OnScrollListener() {
+        @Override
+        public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+            super.onScrollStateChanged(recyclerView, newState);
+        }
+
+        @Override
+        public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+            super.onScrolled(recyclerView, dx, dy);
+
+
+           // Toast.makeText(getContext(), "Scrolling down" + dx + " " + dy, Toast.LENGTH_SHORT).show();
+            if(dy > 0){
+                // cardView.shrink();
+                // LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,0);
+
+                //RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) trending_RecyclerView.getLayoutParams();
+
+                //Toast.makeText(getContext(), "Scrolling down", Toast.LENGTH_SHORT).show();
+                TransitionManager.beginDelayedTransition(constraintLayout);
+                layout2.applyTo(constraintLayout);
+                isOpen = !isOpen;
+                trending_RecyclerView.setVisibility(View.GONE);
+                if(!isOpen){
+
+                }else{
+
+                }
+            }else{
+
+
+              //  Toast.makeText(getContext(), "Scrolling up", Toast.LENGTH_SHORT).show();
+                //  RecyclerView.LayoutParams params = new RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT,200);
+                //  cardView.getLayoutParams();
+                //  trending_RecyclerView.setLayoutParams(params);
+                TransitionManager.beginDelayedTransition(constraintLayout);
+                layout1.applyTo(constraintLayout);
+                isOpen = !isOpen;
+                if(dy == 0){
+                    trending_RecyclerView.setVisibility(View.INVISIBLE);
+                    if(dy < 0){
+                        trending_RecyclerView.setVisibility(View.GONE);
+                    }else{
+                        trending_RecyclerView.setVisibility(View.VISIBLE);
+                    }
+
+
+                }
+
+
+            }
+        }
+    };
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -66,41 +120,7 @@ public class WhatsNewFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
 
-        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
-                super.onScrollStateChanged(recyclerView, newState);
-            }
-
-            @Override
-            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-
-                if(dx > 0){
-                    // cardView.shrink();
-                    // LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,0);
-
-                    //RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) trending_RecyclerView.getLayoutParams();
-
-                    TransitionManager.beginDelayedTransition(constraintLayout);
-                    layout2.applyTo(constraintLayout);
-                    isOpen = !isOpen;
-                    if(!isOpen){
-
-                    }else{
-
-                    }
-                }else{
-                    //  RecyclerView.LayoutParams params = new RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT,200);
-                    //  cardView.getLayoutParams();
-                    //  trending_RecyclerView.setLayoutParams(params);
-                    TransitionManager.beginDelayedTransition(constraintLayout);
-                    layout1.applyTo(constraintLayout);
-                    isOpen = !isOpen;
-
-                }
-            }
-        });
+        recyclerView.addOnScrollListener(onScrollListener);
 
         return v;
     }
