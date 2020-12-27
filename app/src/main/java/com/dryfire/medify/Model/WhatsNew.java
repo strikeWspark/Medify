@@ -1,10 +1,24 @@
 package com.dryfire.medify.Model;
 
-public class WhatsNew {
+import java.io.Serializable;
+
+public class WhatsNew implements Serializable {
 
     private String name;
     private String username;
     private String item;
+    private int whats_new_image;
+
+
+
+    public WhatsNew(String name, String username, String item, int whats_new_image) {
+        this.name = name;
+        this.username = username;
+        this.item = item;
+        this.whats_new_image = whats_new_image;
+    }
+
+
 
     public String getName() {
         return name;
@@ -22,10 +36,12 @@ public class WhatsNew {
         this.username = username;
     }
 
-    public WhatsNew(String item, String name, String username) {
-        this.name = name;
-        this.username = username;
-        this.item = item;
+    public int getWhats_new_image() {
+        return whats_new_image;
+    }
+
+    public void setWhats_new_image(int whats_new_image) {
+        this.whats_new_image = whats_new_image;
     }
 
     public WhatsNew(String item) {

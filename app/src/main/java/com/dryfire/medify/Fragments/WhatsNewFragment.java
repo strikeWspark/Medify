@@ -1,6 +1,6 @@
 package com.dryfire.medify.Fragments;
 
-import android.app.Activity;
+
 import android.os.Bundle;
 import android.transition.TransitionManager;
 import android.view.LayoutInflater;
@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.FrameLayout;
-import android.widget.Toast;
+
 
 
 import androidx.annotation.NonNull;
@@ -20,7 +20,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.dryfire.medify.Activities.MainActivity;
+
 import com.dryfire.medify.Adapter.TrendingSocialRecyclerViewAdapter;
 import com.dryfire.medify.Adapter.WhatsNewRecyclerViewAdapter;
 import com.dryfire.medify.Model.Trending;
@@ -131,16 +131,23 @@ public class WhatsNewFragment extends Fragment {
         trendingList = new ArrayList<>();
         whatsNewList = new ArrayList<>();
 
-        whatsNewList.add(new WhatsNew("Data Item 1","Fionna","fionna@example.com"));
-        whatsNewList.add(new WhatsNew("Data Item 2","John","john@example.com"));
-        whatsNewList.add(new WhatsNew("Data Item 3","Cris","cris@example.com"));
-        whatsNewList.add(new WhatsNew("Data Item 4","Becky","becky@example.com"));
+        whatsNewList.add(new WhatsNew("Data Item 1","Fionna","fionna@example.com",R.drawable.calculate_calories));
+        whatsNewList.add(new WhatsNew("Data Item 2","John","john@example.com",R.drawable.breaking_news));
+        whatsNewList.add(new WhatsNew("Data Item 3","Cris","cris@example.com",R.drawable.protein_shake));
+        whatsNewList.add(new WhatsNew("Data Item 4","Becky","becky@example.com",R.drawable.trending));
 
-        trendingList.add(new Trending("World Just blew up"));
-        trendingList.add(new Trending("Joe win's the election"));
-        trendingList.add(new Trending("You know what it's trending"));
-        trendingList.add(new Trending("Tell me something I don't know"));
-        trendingList.add(new Trending("Why you're still alive"));
+        whatsNewList.add(new WhatsNew("Data Item 1","Fionna","fionna@example.com",R.drawable.calculate_calories));
+        whatsNewList.add(new WhatsNew("Data Item 2","John","john@example.com",R.drawable.breaking_news));
+        whatsNewList.add(new WhatsNew("Data Item 3","Cris","cris@example.com",R.drawable.protein_shake));
+        whatsNewList.add(new WhatsNew("Data Item 4","Becky","becky@example.com",R.drawable.trending));
+
+        trendingList.add(new Trending("World Just blew up",R.drawable.trending_now));
+        trendingList.add(new Trending("Joe win's the election",R.drawable.travel));
+        trendingList.add(new Trending("You know what it's trending",R.drawable.drawer_ackground));
+        trendingList.add(new Trending("World Just blew up",R.drawable.trending_now));
+        trendingList.add(new Trending("Joe win's the election",R.drawable.travel));
+        trendingList.add(new Trending("You know what it's trending",R.drawable.drawer_ackground));
+
 
 
 

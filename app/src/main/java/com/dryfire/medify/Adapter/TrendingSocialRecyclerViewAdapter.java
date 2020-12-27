@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -36,6 +37,7 @@ public class TrendingSocialRecyclerViewAdapter extends RecyclerView.Adapter<Tren
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
         holder.trending_info.setText(trendingList.get(position).getInfo_text());
+        holder.trending_imageView.setBackgroundResource(trendingList.get(position).getTrending_image());
     }
 
     @Override
@@ -45,10 +47,11 @@ public class TrendingSocialRecyclerViewAdapter extends RecyclerView.Adapter<Tren
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView trending_info;
-
+        public ImageView trending_imageView;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             trending_info = (TextView) itemView.findViewById(R.id.trending_info);
+            trending_imageView = (ImageView) itemView.findViewById(R.id.trending_imageView);
         }
     }
 }

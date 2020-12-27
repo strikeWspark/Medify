@@ -5,11 +5,21 @@ public class OrderNow {
     private String restaurantName;
     private String item_name;
     private float price;
+    private int foodImage;
 
-    public OrderNow(String restaurantName, String item_name, float price) {
+    public OrderNow(String restaurantName, String item_name, float price, int foodImage) {
         this.restaurantName = restaurantName;
         this.item_name = item_name;
         this.price = price;
+        this.foodImage = foodImage;
+    }
+
+    public int getFoodImage() {
+        return foodImage;
+    }
+
+    public void setFoodImage(int foodImage) {
+        this.foodImage = foodImage;
     }
 
     public String getRestaurantName() {

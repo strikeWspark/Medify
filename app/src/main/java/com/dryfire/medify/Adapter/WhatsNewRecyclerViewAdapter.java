@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -41,6 +42,7 @@ public class WhatsNewRecyclerViewAdapter extends RecyclerView.Adapter<WhatsNewRe
                 holder.tv_item.setText(whatsNewsList.get(position).getItem());
                 holder.name.setText(whatsNewsList.get(position).getName());
                 holder.username.setText(whatsNewsList.get(position).getUsername());
+                holder.whats_new_imageView.setImageResource(whatsNewsList.get(position).getWhats_new_image());
     }
 
     @Override
@@ -51,6 +53,7 @@ public class WhatsNewRecyclerViewAdapter extends RecyclerView.Adapter<WhatsNewRe
     public  class MyViewHolder extends RecyclerView.ViewHolder {
         TextView tv_item,name,username;
         CardView container;
+        ImageView whats_new_imageView;
         public MyViewHolder(@NonNull View itemView,final Context ctx) {
             super(itemView);
 
@@ -60,11 +63,16 @@ public class WhatsNewRecyclerViewAdapter extends RecyclerView.Adapter<WhatsNewRe
             tv_item = (TextView) itemView.findViewById(R.id.item_data);
             name = itemView.findViewById(R.id.name);
             username = itemView.findViewById(R.id.username);
+            whats_new_imageView = itemView.findViewById(R.id.whats_new_imageView);
 
             container.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                        ctx.startActivity(new Intent(context, FullDetailActivity.class));
+
+                    WhatsNew whatsNew = whatsNewsList.get(getAdapterPosition());
+                    Intent intent = new Intent(context,FullDetailActivity.class);
+                    intent.putExtra("whatsnew",whatsNew);
+                    ctx.startActivity(intent);
                 }
             });
 

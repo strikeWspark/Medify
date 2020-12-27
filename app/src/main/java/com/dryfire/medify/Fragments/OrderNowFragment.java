@@ -47,24 +47,19 @@ public class OrderNowFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         orderNowList = new ArrayList<>();
-        orderNowList.add(new OrderNow("Protien House","Keto Salad",150.0f));
-        orderNowList.add(new OrderNow("Ovan Express","Rice bowl",50.0f));
-        orderNowList.add(new OrderNow("Kitchen Ette","Aaloo Paratha",40.0f));
-        orderNowList.add(new OrderNow("Protien House","Keto Salad",150.0f));
-        orderNowList.add(new OrderNow("Ovan Express","Rice bowl",50.0f));
-        orderNowList.add(new OrderNow("Kitchen Ette","Aaloo Paratha",40.0f));
-        orderNowList.add(new OrderNow("Protien House","Keto Salad",150.0f));
-        orderNowList.add(new OrderNow("Ovan Express","Rice bowl",50.0f));
-        orderNowList.add(new OrderNow("Kitchen Ette","Aaloo Paratha",40.0f));
-        orderNowList.add(new OrderNow("Protien House","Keto Salad",150.0f));
-        orderNowList.add(new OrderNow("Ovan Express","Rice bowl",50.0f));
-        orderNowList.add(new OrderNow("Kitchen Ette","Aaloo Paratha",40.0f));
-        orderNowList.add(new OrderNow("Protien House","Keto Salad",150.0f));
-        orderNowList.add(new OrderNow("Ovan Express","Rice bowl",50.0f));
-        orderNowList.add(new OrderNow("Kitchen Ette","Aaloo Paratha",40.0f));
-        orderNowList.add(new OrderNow("Protien House","Keto Salad",150.0f));
-        orderNowList.add(new OrderNow("Ovan Express","Rice bowl",50.0f));
-        orderNowList.add(new OrderNow("Kitchen Ette","Aaloo Paratha",40.0f));
+        orderNowList.add(new OrderNow("Protien House","Keto Salad",150.0f,R.drawable.boiled_eggs));
+        orderNowList.add(new OrderNow("Ovan Express","Rice bowl",50.0f,R.drawable.fresh_salad_eggs));
+        orderNowList.add(new OrderNow("Kitchen Ette","Aaloo Paratha",40.0f,R.drawable.crispy_french_fries));
+
+
+        orderNowList.add(new OrderNow("Protien House","Keto Salad",150.0f,R.drawable.boiled_eggs));
+        orderNowList.add(new OrderNow("Ovan Express","Rice bowl",50.0f,R.drawable.fresh_salad_eggs));
+        orderNowList.add(new OrderNow("Kitchen Ette","Aaloo Paratha",40.0f,R.drawable.crispy_french_fries));
+
+
+        orderNowList.add(new OrderNow("Protien House","Keto Salad",150.0f,R.drawable.boiled_eggs));
+        orderNowList.add(new OrderNow("Ovan Express","Rice bowl",50.0f,R.drawable.fresh_salad_eggs));
+        orderNowList.add(new OrderNow("Kitchen Ette","Aaloo Paratha",40.0f,R.drawable.crispy_french_fries));
 
 
 

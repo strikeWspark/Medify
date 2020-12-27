@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -42,6 +43,7 @@ public class OrderNowRecyclerViewAdapter extends RecyclerView.Adapter<OrderNowRe
             holder.restaurantName.setText(orderNowList.get(position).getRestaurantName());
             holder.itemName.setText(orderNowList.get(position).getItem_name());
             holder.itemPrice.setText("\u20b9 " +orderNowList.get(position).getPrice());
+            holder.food_item_image.setImageResource(orderNowList.get(position).getFoodImage());
     }
 
     @Override
@@ -52,12 +54,14 @@ public class OrderNowRecyclerViewAdapter extends RecyclerView.Adapter<OrderNowRe
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView restaurantName,itemName,itemPrice;
         RelativeLayout container;
+        ImageView food_item_image;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             container = itemView.findViewById(R.id.container);
             restaurantName = itemView.findViewById(R.id.restaurant_name);
             itemName = itemView.findViewById(R.id.restuarant_item_name);
             itemPrice = itemView.findViewById(R.id.item_price);
+            food_item_image = itemView.findViewById(R.id.restaurant_food_image);
         }
     }
 }

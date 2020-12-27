@@ -18,6 +18,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.appcompat.widget.ToolbarWidgetWrapper;
 import androidx.palette.graphics.Palette;
 
+import com.dryfire.medify.Model.WhatsNew;
 import com.dryfire.medify.R;
 import com.dryfire.medify.Util.SharedPrefs;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
@@ -29,7 +30,7 @@ public class FullDetailActivity extends AppCompatActivity {
     private TextView detailTextView;
     private CollapsingToolbarLayout collapsingToolbarLayout;
     private Toolbar toolbar;
-
+    private ImageView toolbarImageview;
     private SharedPrefs sharedPrefs;
     private Palette.Swatch vibrantSwatch;
     private Palette.Swatch lightVibrantSwatch;
@@ -38,6 +39,7 @@ public class FullDetailActivity extends AppCompatActivity {
     private Palette.Swatch lightMutedSwatch;
     private Palette.Swatch darkMutedSwatch;
     private Palette.Swatch currentSwatch = null;
+    private WhatsNew whatsNew;
     boolean flag;
 
     @Override
@@ -59,13 +61,18 @@ public class FullDetailActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
                 WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 
+
+        whatsNew = (WhatsNew) getIntent().getSerializableExtra("whatsnew");
+        Toast.makeText(this, ""+ whatsNew.getName(), Toast.LENGTH_SHORT).show();
+
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapse_toolbar);
         collapsingToolbarLayout.setExpandedTitleTextAppearance(R.style.collapsingToolbarTitleTextColor);
         collapsingToolbarLayout.setTitle("Title");
         if (flag) {
             collapsingToolbarLayout.setCollapsedTitleTextColor(Color.parseColor("#ffffff"));
         }
-
+        toolbarImageview = (ImageView) findViewById(R.id.toolbarImageView);
+        toolbarImageview.setBackgroundResource(whatsNew.getWhats_new_image());
         toolbar = findViewById(R.id.toolbar_full_detail);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

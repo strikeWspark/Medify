@@ -14,7 +14,11 @@
 
 
         <activity android:name=".Activities.SplashScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
 
         </activity>
@@ -39,11 +43,7 @@
         <activity android:name=".Activities.FullDetailActivity"/>
 
         <activity android:name=".UI.HowToUse.HowToUse">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
         </activity>
         <meta-data
