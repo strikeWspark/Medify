@@ -35,11 +35,13 @@ import com.dryfire.medify.Adapter.ViewPagerAdapter;
 import com.dryfire.medify.Fragments.OrderNowFragment;
 import com.dryfire.medify.Fragments.WhatsNewFragment;
 import com.dryfire.medify.R;
+import com.dryfire.medify.UI.HowToUse.HowToUse;
 import com.dryfire.medify.UI.More.MoreActivity;
 import com.dryfire.medify.Util.NavigationIconClickListener;
 import com.dryfire.medify.UI.Profile.ProfileActivity;
 import com.dryfire.medify.Util.SharedPrefs;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
@@ -57,13 +59,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private AlertDialog.Builder searchBuilder;
     private AlertDialog searchDialog;
     private Switch aSwitch;
-    private TextView moreButton,profileButton;
+    private TextView moreButton,profileButton,howtoUseButton;
     DrawerLayout drawerLayout;
     private SharedPrefs sharedPrefs;
     private boolean flag = false;
     Menu search_menu;
     MenuItem item_search;
     private AppBarConfiguration mAppBarConfiguration;
+    private MaterialButton search_button,cancel_button,done_button;
 
 
 
@@ -102,12 +105,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         search_toolbar = (Toolbar) findViewById(R.id.search_toolbar);
         moreButton = (TextView) findViewById(R.id.more);
         profileButton = (TextView) findViewById(R.id.medify_profile);
+        howtoUseButton = (TextView) findViewById(R.id.medify_howtouse);
         adapter = new ViewPagerAdapter(getSupportFragmentManager());
         searchBuilder = new AlertDialog.Builder(this);
         //setSearchtoolbar();
 
         moreButton.setOnClickListener(this);
         profileButton.setOnClickListener(this);
+        howtoUseButton.setOnClickListener(this);
 
        /* mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_profile,R.id.nav_settings)
@@ -189,10 +194,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void categoryBottomSheet() {
-        BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
+        final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
         View v = LayoutInflater.from(this).inflate(R.layout.category_bottom_sheet,null);
+        done_button = (MaterialButton) v.findViewById(R.id.done_button);
         bottomSheetDialog.setContentView(v);
         bottomSheetDialog.show();
+
+        done_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bottomSheetDialog.dismiss();
+            }
+        });
     }
 
     @Override
@@ -232,6 +245,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.more:
                     startActivity(new Intent(this, MoreActivity.class));
+                break;
+            case R.id.medify_howtouse:
+                startActivity(new Intent(this, HowToUse.class));
                 break;
         }
     }
