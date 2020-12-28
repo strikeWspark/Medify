@@ -6,4 +6,6 @@
     <string name="profile">Profile</string>
     <string name="more">More</string>
     <string name="report_bug">Report Bug</string>
+    <string name="username">Email | Username</string>
+    <string name="password">Password</string>
 </resources>
