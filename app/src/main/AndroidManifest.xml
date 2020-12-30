@@ -43,6 +43,12 @@
         <activity android:name=".UI.More.MoreActivity"/>
         <activity android:name=".Activities.FullDetailActivity"/>
 
+        <activity android:name=".Activities.OrderNowActivity">
+
+
+
+        </activity>
+
         <activity android:name=".UI.HowToUse.HowToUse">
 
 

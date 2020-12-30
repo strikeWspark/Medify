@@ -1,6 +1,8 @@
 package com.dryfire.medify.Model;
 
-public class OrderNow {
+import java.io.Serializable;
+
+public class OrderNow implements Serializable {
 
     private String restaurantName;
     private String item_name;

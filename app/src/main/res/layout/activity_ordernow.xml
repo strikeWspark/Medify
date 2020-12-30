@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/backgroundcolor"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/order_now_imageView"
+            android:layout_width="match_parent"
+            android:layout_height="385dp"
+            android:background="@drawable/trending_now"
+            android:src="@drawable/ordernow_gradient"/>
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@android:color/transparent"
+            android:elevation="0dp"
+            android:id="@+id/ordernow_toolbar"/>
+
+
+
+
+
+    </FrameLayout>
+
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/bottomsheet"
+        android:layout_width="match_parent"
+        android:layout_height="550dp"
+        android:background="@drawable/search_dialog_shape"
+        android:backgroundTint="?attr/cardbackground"
+        app:layout_behavior="@string/bottom_sheet_behavior"
+        app:behavior_hideable="false"
+        app:behavior_peekHeight="400dp">
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Description"
+                android:textColor="?attr/textcolor"
+                android:layout_margin="@dimen/margin"
+                android:padding="@dimen/padding"
+                android:textSize="@dimen/title_text"
+                android:fontFamily="@font/open_sans_semibold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ordernow_description_textView"
+                android:layout_margin="@dimen/margin"
+                android:padding="@dimen/padding"
+                android:textColor="?attr/textcolor"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ingridients"
+                android:textColor="?attr/textcolor"
+                android:layout_margin="@dimen/margin"
+                android:padding="@dimen/padding"
+                android:textSize="@dimen/title_text"
+                android:fontFamily="@font/open_sans_semibold"/>
+
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:orientation="horizontal">
+
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="@dimen/margin"
+                        android:elevation="3dp"
+                        android:padding="@dimen/padding"
+                        app:cardCornerRadius="8dp">
+
+                        <ImageView
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:background="@drawable/trending_now"/>
+                    </androidx.cardview.widget.CardView>
+
+
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="@dimen/margin"
+                        android:elevation="3dp"
+                        android:padding="@dimen/padding"
+                        app:cardCornerRadius="8dp">
+
+                        <ImageView
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:background="@drawable/trending"/>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:elevation="3dp"
+                        android:layout_margin="@dimen/margin"
+                        android:padding="@dimen/padding"
+                        app:cardCornerRadius="8dp">
+
+                        <ImageView
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:background="@drawable/travel"/>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:elevation="3dp"
+                        android:layout_margin="@dimen/margin"
+                        android:padding="@dimen/padding"
+                        app:cardCornerRadius="8dp">
+
+                        <ImageView
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:background="@drawable/order_now"/>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:elevation="3dp"
+                        android:padding="@dimen/padding"
+                        android:layout_margin="@dimen/margin"
+                        app:cardCornerRadius="8dp">
+
+                        <ImageView
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:background="@drawable/calculate_calories"/>
+
+                    </androidx.cardview.widget.CardView>
+
+
+
+
+                </LinearLayout>
+
+
+            </HorizontalScrollView>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:text="Order Now"
+            app:cornerRadius="@dimen/fab_margin"
+            android:backgroundTint="?attr/buttoncolor"
+            android:layout_margin="@dimen/margin"
+            android:padding="@dimen/padding"
+            android:elevation="@dimen/margin"/>
+
+        </LinearLayout>
+
+
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
