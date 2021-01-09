@@ -7,7 +7,7 @@
         <item name="colorAccent">#DD2C7C</item>
         <item name="backgroundcolor">#fcfcfc</item>
         <item name="cardbackground">#ffffff</item>
-
+        <item name="othertextcolor">#494646</item>
         <item name="textcolor">#000000</item>
         <item name="tintcolor">#000000</item>
         <item name="buttoncolor">#2196F3</item>
@@ -26,6 +26,7 @@
         <item name="colorAccent">#DD2C7C</item>
         <item name="backgroundcolor">#303030</item>
         <item name="cardbackground">#424242</item>
+        <item name="othertextcolor">#6C6969</item>
         <item name="textcolor">#ffffff</item>
         <item name="tintcolor">#ffffff</item>
         <item name="buttoncolor">#2196F3</item>

@@ -4,10 +4,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.dryfire.medify.R;
@@ -28,9 +30,15 @@ public class LoginActivity extends AppCompatActivity {
     private TextInputLayout usernameInput,passwordInput;
     private TextInputEditText usernameEdit,passowrdEdit;
     private MaterialButton loginButton;
+    private TextView signUpTextButton;
     private FirebaseAuth mAuth;
     private FirebaseUser mUSer;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
+
+    private AlertDialog.Builder builder;
+    private AlertDialog dialog;
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
 
@@ -42,6 +50,16 @@ public class LoginActivity extends AppCompatActivity {
         }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        new SplashScreen().statusBarView(getWindow());
+
+        builder = new AlertDialog.Builder(this);
+
+        View view = getLayoutInflater().inflate(R.layout.progress_dialog_layout,null);
+        builder.setView(view);
+
+        dialog = builder.create();
+
 
         FirebaseApp.initializeApp(this);
         mAuth = FirebaseAuth.getInstance();
@@ -64,12 +82,23 @@ public class LoginActivity extends AppCompatActivity {
         passowrdEdit = (TextInputEditText) findViewById(R.id.medify_edittext_password);
         loginButton = (MaterialButton) findViewById(R.id.signin_button);
 
+        signUpTextButton = (TextView) findViewById(R.id.signup_textButton);
+
+
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                dialog.show();
                 signingIn();
 
+            }
+        });
+
+        signUpTextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this,SignUpActivity.class));
             }
         });
     }
@@ -85,6 +114,7 @@ public class LoginActivity extends AppCompatActivity {
                         if(task.isSuccessful()){
                             startActivity(new Intent(LoginActivity.this,MainActivity.class));
                             finish();
+                            dialog.dismiss();
                             Toast.makeText(LoginActivity.this,"SignEd IN",Toast.LENGTH_LONG).show();
                         }else{
                             Toast.makeText(LoginActivity.this, "Not Signed In", Toast.LENGTH_SHORT).show();
@@ -94,7 +124,7 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    private boolean isPassowrd(Editable pwd){
+    public boolean isPassword(String pwd){
         return pwd != null && pwd.length() >= 8;
     }
 

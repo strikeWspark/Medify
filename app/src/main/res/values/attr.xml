@@ -9,6 +9,7 @@
         <attr name="tintcolor" format="color"/>
         <attr name="buttoncolor" format="color"/>
         <attr name="clickcolor" format="color"/>
+        <attr name="othertextcolor" format="color"/>
     </declare-styleable>
 
 </resources>

@@ -45,7 +45,7 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
-
+import com.google.firebase.auth.FirebaseAuth;
 
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private AlertDialog.Builder searchBuilder;
     private AlertDialog searchDialog;
     private Switch aSwitch;
-    private TextView moreButton,profileButton,howtoUseButton;
+    private TextView moreButton,profileButton,howtoUseButton,signOutButton;
     DrawerLayout drawerLayout;
     private SharedPrefs sharedPrefs;
     private boolean flag = false;
@@ -68,6 +68,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private AppBarConfiguration mAppBarConfiguration;
     private MaterialButton search_button,cancel_button,done_button;
 
+    private FirebaseAuth mAuth;
 
 
     @Override
@@ -83,6 +84,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
 
 
+        mAuth = FirebaseAuth.getInstance();
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
        // sliding_linearLayout = findViewById(R.id.slidind_layout);
@@ -103,6 +105,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         fab = (FloatingActionButton) findViewById(R.id.search_fab);
         search_toolbar = (Toolbar) findViewById(R.id.search_toolbar);
+        signOutButton = (TextView) findViewById(R.id.medify_signout);
         moreButton = (TextView) findViewById(R.id.more);
         profileButton = (TextView) findViewById(R.id.medify_profile);
         howtoUseButton = (TextView) findViewById(R.id.medify_howtouse);
@@ -110,6 +113,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         searchBuilder = new AlertDialog.Builder(this);
         //setSearchtoolbar();
 
+        signOutButton.setOnClickListener(this);
         moreButton.setOnClickListener(this);
         profileButton.setOnClickListener(this);
         howtoUseButton.setOnClickListener(this);
@@ -239,6 +243,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.medify_signout:
+                mAuth.signOut();
+                startActivity(new Intent(this,LoginActivity.class));
+                finish();
+
                 break;
             case R.id.medify_profile:
                 startActivity(new Intent(this,ProfileActivity.class));
@@ -249,6 +257,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.medify_howtouse:
                 startActivity(new Intent(this, HowToUse.class));
                 break;
+
         }
     }
 

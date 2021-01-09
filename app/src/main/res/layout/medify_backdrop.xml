@@ -24,8 +24,9 @@
 
  <TextView
      android:id="@+id/medify_signout"
-     android:layout_width="wrap_content"
+     android:layout_width="match_parent"
      android:layout_height="wrap_content"
+     android:textAlignment="center"
      android:background="@drawable/ripple_effect"
      android:backgroundTint="?attr/backgroundcolor"
      android:elevation="0dp"

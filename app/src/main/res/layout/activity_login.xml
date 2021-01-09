@@ -125,13 +125,15 @@
 
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Don't have account?Sign Up"
-                android:id="@+id/signu_text"
-                android:layout_gravity="center"
+                android:id="@+id/signup_textButton"
+                android:gravity="center_horizontal"
                 android:textColor="?attr/textcolor"
                 android:textStyle="bold"
+                android:background="@drawable/ripple_effect"
+                android:backgroundTint="?attr/backgroundcolor"
                 android:layout_margin="@dimen/margin"
                 android:padding="@dimen/padding"
                 android:fontFamily="sans-serif-condensed"/>

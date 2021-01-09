@@ -46,9 +46,7 @@ public class OrderNowActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ordernow);
 
-        getWindow().setFlags(
-                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
-                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        new SplashScreen().statusBarView(getWindow());
 
         orderNow = (OrderNow) getIntent().getSerializableExtra("order");
         Toast.makeText(this, "" + orderNow.getItem_name(), Toast.LENGTH_SHORT).show();

@@ -15,23 +15,41 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginTop="25dp">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:id="@+id/signup_Toolbar"
+            android:elevation="0dp"/>
 
     <TextView
         android:id="@+id/welomeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Let's get started"
-        android:layout_marginTop="95dp"
+        android:text="Let's get started!"
+        android:layout_marginTop="50dp"
         android:fontFamily="@font/open_sans_semibold"
-        android:textSize="@dimen/title_text"
+        android:textSize="@dimen/backdrop_textSize"
         android:textStyle="bold"
         android:layout_marginLeft="@dimen/margin"
         android:padding="@dimen/padding"
         android:textColor="?attr/textcolor" />
+        <TextView
+            android:id="@+id/ExtraInfoText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Create an account for better \nexperience and features of app "
+
+            android:fontFamily="@font/open_sans_semibold"
+            android:textSize="18sp"
+
+            android:layout_marginLeft="@dimen/margin"
+            android:padding="@dimen/padding"
+            android:textColor="?attr/othertextcolor" />
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/signup_input_username"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-condensed"
@@ -50,7 +68,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/signup_input_email"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-condensed"
@@ -69,7 +87,6 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/signup_input_password"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/fab_margin"
@@ -100,6 +117,27 @@
             android:backgroundTint="?attr/buttoncolor"
             android:layout_margin="@dimen/margin"
             android:padding="@dimen/padding"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Or"
+            android:textColor="?attr/othertextcolor"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="@dimen/margin"
+            android:padding="@dimen/padding"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cornerRadius="3dp"
+            android:id="@+id/googleSignupButton"
+            android:text="Continue with google"
+            android:textColor="?attr/textcolor"
+            android:backgroundTint="?attr/backgroundcolor"
+            android:layout_margin="@dimen/margin"
+            android:padding="@dimen/padding"/>
+
 
         </LinearLayout>
 

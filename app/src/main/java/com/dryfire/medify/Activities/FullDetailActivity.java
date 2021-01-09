@@ -57,9 +57,7 @@ public class FullDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.full_detail_activity);
 
-        getWindow().setFlags(
-                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
-                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        new SplashScreen().statusBarView(getWindow());
 
 
         whatsNew = (WhatsNew) getIntent().getSerializableExtra("whatsnew");
