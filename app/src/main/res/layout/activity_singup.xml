@@ -6,6 +6,105 @@
     android:layout_height="match_parent"
     android:background="?attr/backgroundcolor">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/welomeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Let's get started"
+        android:layout_marginTop="95dp"
+        android:fontFamily="@font/open_sans_semibold"
+        android:textSize="@dimen/title_text"
+        android:textStyle="bold"
+        android:layout_marginLeft="@dimen/margin"
+        android:padding="@dimen/padding"
+        android:textColor="?attr/textcolor" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/signup_input_username"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed"
+            android:layout_margin="@dimen/fab_margin"
+            android:textColorHint="?attr/textcolor"
+            android:padding="@dimen/padding">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/signup_edit_username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Username"
+                android:textColor="?attr/textcolor"
+                android:fontFamily="sans-serif-condensed"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/signup_input_email"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-condensed"
+        android:layout_margin="@dimen/fab_margin"
+        android:textColorHint="?attr/textcolor"
+        android:padding="@dimen/padding">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/signup_edit_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="E-mail"
+            android:textColor="?attr/textcolor"
+            android:fontFamily="sans-serif-condensed"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/signup_input_password"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/fab_margin"
+        android:padding="@dimen/padding"
+        android:textColorHint="?attr/textcolor"
+        android:fontFamily="sans-serif-condensed"
+        app:passwordToggleEnabled="true">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/signup_edit_password"
+            android:layout_width="match_parent"
+            android:hint="@string/password"
+            android:textColor="?attr/textcolor"
+            android:fontFamily="sans-serif-condensed"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cornerRadius="3dp"
+            android:id="@+id/signupButton"
+            android:text="Sign Up"
+            android:backgroundTint="?attr/buttoncolor"
+            android:layout_margin="@dimen/margin"
+            android:padding="@dimen/padding"/>
+
+        </LinearLayout>
+
+
+    </ScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

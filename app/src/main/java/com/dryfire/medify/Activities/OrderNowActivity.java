@@ -6,6 +6,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -30,6 +31,7 @@ public class OrderNowActivity extends AppCompatActivity {
     private SharedPrefs sharedPrefs;
     OrderNow orderNow;
     private Toolbar toolbar;
+    boolean statusBar_flag;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -43,6 +45,10 @@ public class OrderNowActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ordernow);
+
+        getWindow().setFlags(
+                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 
         orderNow = (OrderNow) getIntent().getSerializableExtra("order");
         Toast.makeText(this, "" + orderNow.getItem_name(), Toast.LENGTH_SHORT).show();
@@ -84,11 +90,33 @@ public class OrderNowActivity extends AppCompatActivity {
 
                 switch (newState){
                     case BottomSheetBehavior.STATE_DRAGGING:
-                      //  imageView.getLayoutParams().height -= 50;
+                        if(!statusBar_flag){
+                            getWindow().setFlags(
+                                    WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                                    WindowManager.LayoutParams.FLAG_FULLSCREEN);
+                            statusBar_flag = !statusBar_flag;
+                        }else{
+                            getWindow().setFlags(
+                                    WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+                                    WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+                            statusBar_flag = !statusBar_flag;
+                        }
+
+
+
+                        //  imageView.getLayoutParams().height -= 50;
                        // imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
 
                         break;
                     case BottomSheetBehavior.STATE_COLLAPSED:
+
+                        getWindow().setFlags(
+                                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+                                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+
+                            break;
+
+
                         //imageView.getLayoutParams().height += 50;
                         //imageView.setScaleType(ImageView.ScaleType.FIT_XY);
 
